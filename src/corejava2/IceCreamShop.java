@@ -6,16 +6,16 @@ public class IceCreamShop
 {
     public static void main(String[] args)
     {
-        String type11 = "type11";
-        String type12 = "type12";
-        String type13 = "type13";
-        String type14 = "type14";
+        String type11 = "blueberry";
+        String type12 = "strawberry";
+        String type13 = "chocolate";
+        String type14 = "cream";
 
-        String type21 = "type21";
-        String type22 = "type22";
-        String type23 = "type23";
-        String type24 = "type24";
-        String type25 = "type25";
+        String type21 = "chocolate";
+        String type22 = "cream";
+        String type23 = "blueberry";
+        String type24 = "matcha";
+        String type25 = "strawberry";
 
         float price11 = 4;
         float price12 = 3;
@@ -33,9 +33,12 @@ public class IceCreamShop
         String userName = scanner.next();
         System.out.println("Hey " + userName + "! How are you today?");
         String userInput = scanner.next();
-        String bill = "";
+        String bill = "===============BILL===================\n"
+                     +"No.       Flavor       Price  Qty Amount\n"
+                     +"======================================";
         float total = 0;
 
+        int count = 0;
         while(true)
         {
             System.out.println("Would you like 1.Scoops or 2.Exquisite? \n Please input the number");
@@ -56,21 +59,26 @@ public class IceCreamShop
             if(menuID == 1)
             {
                 System.out.println("You choose Scoops, here is the menu:");
-                System.out.println("1."+ type11 + " $" + price11);
-                System.out.println("2."+ type12 + " $" + price12);
-                System.out.println("3."+ type13 + " $" + price13);
-                System.out.println("4."+ type14 + " $" + price14);
+                System.out.println("================Scoops===================");
+                System.out.println(String.format("%2d. %10s    $%4.2f", 1, type11, price11));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 2, type12, price12));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 3, type13, price13));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 4, type14, price14));
+                System.out.println("=========================================");
             }
             else
             {
                 System.out.println("You choose Exquisite, here is the menu:");
-                System.out.println("1."+ type21 + " $" + price21);
-                System.out.println("2."+ type22 + " $" + price22);
-                System.out.println("3."+ type23 + " $" + price23);
-                System.out.println("4."+ type24 + " $" + price24);
-                System.out.println("5."+ type25 + " $" + price25);
+
+                System.out.println("================Exquisite================");
+                System.out.println(String.format("%2d. %10s    $%4.2f", 1, type21, price21));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 2, type22, price22));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 3, type23, price23));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 4, type24, price24));
+                System.out.println(String.format("%2d. %10s    $%4.2f", 5, type25, price25));
+                System.out.println("=========================================");
             }
-            System.out.println("Please input the number you want");
+            System.out.println("\nPlease input the number you want");
             int typeID = -1;
             for(;;)
             {
@@ -86,7 +94,8 @@ public class IceCreamShop
             }
             System.out.println("How many IceCream you wan to buy?");
             int numberOfIceCream = scanner.nextInt();
-            System.out.println("here is the bill:");
+            System.out.println("\nhere is the bill:");
+            count++;
             float sum = 0;
             switch (menuID)
             {
@@ -97,25 +106,25 @@ public class IceCreamShop
                         case 1:
                         {
                             sum = price11*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Scoops",type11,price11,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Scoops "+type11,price11,numberOfIceCream,sum);
                             break;
                         }
                         case 2:
                         {
                             sum = price12*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Scoops",type12,price12,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Scoops "+type12,price12,numberOfIceCream,sum);
                             break;
                         }
                         case 3:
                         {
                             sum = price13*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Scoops",type13,price13,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Scoops "+type13,price13,numberOfIceCream,sum);
                             break;
                         }
                         case 4:
                         {
                             sum = price14*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Scoops",type14,price14,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Scoops "+type14,price14,numberOfIceCream,sum);
                             break;
                         }
                     }
@@ -128,31 +137,31 @@ public class IceCreamShop
                         case 1:
                         {
                             sum = price21*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Exquisite",type21,price21,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Exquisite "+type21,price21,numberOfIceCream,sum);
                             break;
                         }
                         case 2:
                         {
                             sum = price22*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Exquisite",type22,price22,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Exquisite "+type22,price22,numberOfIceCream,sum);;
                             break;
                         }
                         case 3:
                         {
                             sum = price23*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Exquisite",type23,price23,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Exquisite "+type23,price23,numberOfIceCream,sum);;
                             break;
                         }
                         case 4:
                         {
                             sum = price24*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Exquisite",type24,price24,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Exquisite "+type24,price24,numberOfIceCream,sum);;
                             break;
                         }
                         case 5:
                         {
                             sum = price25*numberOfIceCream;
-                            bill = bill + String.format("%10s %10s %2.2f %4d %3.2f\n", "Exquisite",type25,price25,numberOfIceCream,sum);
+                            bill = bill + String.format("\n%2d %20s  %4.2f %3d  %4.2f",count, "Exquisite "+type25,price25,numberOfIceCream,sum);;
                             break;
                         }
                     }
@@ -161,16 +170,19 @@ public class IceCreamShop
             }
             total = total + sum;
             System.out.println(bill);
+            System.out.println("======================================");
             System.out.println("total:" + total);
+            System.out.println("======================================\n");
             System.out.println("Do you want more?");
             String reply = scanner.next();
-            if(reply.equals("No")) {
+            if(reply.equals("No"))
+            {
                 break;
             }
         }
-
         System.out.println("Your bill is here:\n" + bill);
+        System.out.println("======================================");
         System.out.println("total:" + total);
-
+        System.out.println("======================================\n");
     }
 }

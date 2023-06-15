@@ -39,7 +39,7 @@ public class ArrayTesk2
 
         for (int i = 0; i< count; i++)
         {
-            System.out.println(String.format( "| %4d) %16s %8d     |",i,subjectArray[i], subjectGrade[i]));
+            System.out.println(String.format( "| %4d) %16s %8d     |",i+1,subjectArray[i], subjectGrade[i]));
         }
         System.out.println("----------------------------------------");
         String grade;

@@ -50,6 +50,14 @@ class Seller
     {
         Seller.sellRecords = sellRecords;
     }
+    public static SellRecord[] getSellRecords()
+    {
+        return Seller.sellRecords;
+    }
+    public void add(int carTypeIndex, int carNumber)
+    {
+        Seller.sellRecords[carTypeIndex].sellNumber = Seller.sellRecords[carTypeIndex].sellNumber + carNumber;
+    }
 }
 public class TaskCarDealer
 {
@@ -64,6 +72,7 @@ public class TaskCarDealer
         SellRecord sellRecord3 = new SellRecord("BMW X3");
 
         SellRecord[] RecordList = new SellRecord[]{sellRecord1,sellRecord2,sellRecord3};
+        Seller.setSellRecord(RecordList);
 
         SellRecord oldSellRecord1 = new SellRecord("BMW X1");
         oldSellRecord1.add(10);
@@ -71,7 +80,7 @@ public class TaskCarDealer
         oldSellRecord2.add(30);
         SellRecord oldSellRecord3 = new SellRecord("BMW X3");
         oldSellRecord3.add(21);
-        SellRecord[] oldRecordList = new SellRecord[]{oldSellRecord1,oldSellRecord2,oldSellRecord2};
+        SellRecord[] oldRecordList = new SellRecord[]{oldSellRecord1,oldSellRecord2,oldSellRecord3};
 
         Scanner scanner = new Scanner(System.in);
 
@@ -102,7 +111,7 @@ public class TaskCarDealer
                 {
                   System.out.println("please input how many cars you sell:");
                   int carNumber = scanner.nextInt();
-                  RecordList[carIndex-1].add(carNumber);
+                  sellerList[sellerIndex].add(carIndex-1, carNumber);
                   break;
                 }
                 else
@@ -115,7 +124,7 @@ public class TaskCarDealer
             System.out.println("Input Y to Exit, others to continue");
             if(scanner.next().equals("Y"))
             {
-                SellReport sellReport = new SellReport(RecordList,oldRecordList);
+                SellReport sellReport = new SellReport(Seller.getSellRecords(),oldRecordList);
                 System.out.println(sellReport.getSellreport());
                 break;
             }
